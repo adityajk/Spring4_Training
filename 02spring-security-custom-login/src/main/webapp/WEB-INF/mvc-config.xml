@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- Uncomment and your base-package here:
+           -->
+<context:component-scan      base-package="in.co.way2learn"/>
+
+    <mvc:annotation-driven />
+    <mvc:default-servlet-handler/>
+    
+    <mvc:view-controller path="/login/form" view-name="login"/>
+    
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+    	<property name="order" value="2" />
+    	<property name="prefix" value="/WEB-INF/jsp/" />
+    	<property name="suffix" value=".jsp"></property>
+    </bean>
+    
+    <bean id="viewResolver"  
+		class="org.springframework.web.servlet.view.tiles3.TilesViewResolver">
+		<property name="order" value="1" />
+	</bean>
+		
+	<bean id="tilesConfigurer"
+		class="org.springframework.web.servlet.view.tiles3.TilesConfigurer" autowire="default">
+		<property name="definitions">
+			<list>
+				<value>/WEB-INF/tiles.xml</value>
+			</list>
+		</property>
+	</bean>
+	
+	
+	
+	
+	
+	
+<!-- 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"> -->
+<!-- 		<property name="prefix" value="/WEB-INF/jsp/application/"/> -->
+<!-- 		<property name="suffix" value=".jsp"/> -->
+<!-- 	</bean> -->
+
+	
+
+</beans>
